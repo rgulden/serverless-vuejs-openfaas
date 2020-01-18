@@ -45,7 +45,10 @@ module.exports = (event, context) => {
 
     let content = data.toString();
 
-    if (headers["Content-Type"] == "image/png") {
+    if (
+      headers["Content-Type"] == "image/png" ||
+      headers["Content-Type"] == "image/x-icon"
+    ) {
       context
         .headers(headers)
         .status(200)
