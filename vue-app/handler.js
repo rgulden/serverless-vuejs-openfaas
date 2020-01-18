@@ -19,6 +19,8 @@ module.exports = (event, context) => {
     headers["Content-Type"] = "text/css";
   } else if (/.*\.ico/.test(path)) {
     headers["Content-Type"] = "image/x-icon";
+  } else if (/.*\.img/.test(path)) {
+    headers["Content-Type"] = "image/png";
   } else if (/.*\.json/.test(path)) {
     headers["Content-Type"] = "application/json";
   } else if (/.*\.map/.test(path)) {
