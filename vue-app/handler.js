@@ -43,7 +43,16 @@ module.exports = (event, context) => {
       return;
     }
 
-    let content = data.toString();
+    let content = data.toString();;
+    
+    if (headers["Content-Type"] == "image/png"){
+      context
+      .headers(headers)
+      .status(200)
+      .succeed(data, 'Base64');
+
+      return;
+    }
 
     context
       .headers(headers)
