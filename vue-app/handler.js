@@ -42,19 +42,13 @@ module.exports = (event, context) => {
 
       return;
     }
-    let content = data.toString();
-    if (headers["Content-Type"] == "image/png"){
-      content = data.toString("base64");
-      context
-      .headers(headers)
-      .status(200)
-      .succeed(content)
-      .isBase64Encoded(true);
-    } else {
-      context
-      .headers(headers)
-      .status(200)
-      .succeed(content);
-    }
+    let content = data.toString("base64");
+    
+    context
+    .headers(headers)
+    .status(200)
+    .succeed(content)
+    .isBase64Encoded(true);
+
   });
 };
