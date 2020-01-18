@@ -8,4 +8,4 @@ functions:
     handler: ./vue-app
     image: rgulden7/vue-app:latest
     labels:
-      com.openfaas.scale.zero: false
+      com.openfaas.scale.zero: true
