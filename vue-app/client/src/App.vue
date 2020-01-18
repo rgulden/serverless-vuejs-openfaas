@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to GuldenTech's Serverless Vue.js App"/>
+    <b-card class="text-center">
+      <img alt="Vue logo" src="./assets/logo.png" />
+      <HelloWorld msg="Welcome to GuldenTech's Serverless Vue.js App" />
+    </b-card>
+    <br>
+    <br>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     HelloWorld
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
