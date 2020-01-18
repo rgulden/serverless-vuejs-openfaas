@@ -1,5 +1,5 @@
 {
-  "name": "vue_app_serverless",
+  "name": "function",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
