@@ -1,4 +1,4 @@
 module.exports = {
-  publicPath: "/function/guldentech-vue-app/",
+  publicPath: "/api/",
   productionSourceMap: false
 };
