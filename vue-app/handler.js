@@ -45,7 +45,6 @@ module.exports = (event, context) => {
     let content = data.toString();
     if (headers["Content-Type"] == "image/png"){
       content = data.toString("base64");
-      headers['contentHandling'] = 'CONVERT_TO_BINARY';
       context
       .headers(headers)
       .status(200)
