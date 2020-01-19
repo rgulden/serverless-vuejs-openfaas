@@ -9,3 +9,4 @@ functions:
     image: rgulden7/vue-app:latest
     labels:
       com.openfaas.scale.zero: true
+      com.openfaas.scale.min: 5
