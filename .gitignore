@@ -1,5 +1,8 @@
 .DS_Store
+dist
 node_modules
+template
+build
 
 # local env files
 .env.local
