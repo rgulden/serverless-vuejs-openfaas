@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <b-card class="text-center">
-      <p><strong>{{ reply }}</strong></p>
+      <img alt="Vue logo" src="./assets/logo.png" />
+      <HelloWorld msg="Welcome to GuldenTech's Serverless Vue.js App" />
     </b-card>
     <br>
     <br>
@@ -9,29 +10,13 @@
 </template>
 
 <script>
-import axios from 'axios';
 import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "app",
   components: {
     HelloWorld
-  },
-  data() {
-    return {
-      reply: "",
-    }
-  },
-  created() {
-    axios.get(`/daily_Status`)
-    .then(response => {
-      this.reply = response.data
-    })
-    .catch(e => {
-      console.log(e)
-    })
   }
-}
+};
 </script>
 
 <style>
