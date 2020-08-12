@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    tools {nodejs "nodejs"}
     stages {
         stage('Run unit tets') {
             steps {
@@ -8,13 +9,11 @@ pipeline {
         }
         stage('Build files') {
             steps {
-                nodejs(nodeJSInstallationName: 'Node 10.16.1') {
-                    sh 'cd src/vue-app/client'
-                    sh 'npm install'
-                    sh 'npm run build'
-                    sh 'cd ../../..'
-                    sh 'ls -l'
-                }
+                sh 'cd src/vue-app/client'
+                sh 'npm install'
+                sh 'npm run build'
+                sh 'cd ../../..'
+                sh 'ls -l'
             }
         }
         stage('copy files to pi') {
