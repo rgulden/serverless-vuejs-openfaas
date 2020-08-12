@@ -25,6 +25,7 @@ pipeline {
                         ssh -o StrictHostKeyChecking=no pi@192.168.1.30 \
                         'if [ -d "src" ]; then rm -Rf src; fi'
                     """
+                    sh 'rm -rf src/vue-app/client/node_modules'
                     sh 'scp -o StrictHostKeyChecking=no -r src/ pi@192.168.1.30:~/'
                 }
             }
@@ -49,7 +50,7 @@ pipeline {
                     sh 'chmod +x ./kubectl'
                     sh './kubectl version --client'
                     
-                    sh "cat \$config >> config"
+                    sh "cat $config >> config"
                     sh "export KUBECONFIG=config"
                     
                     sh "./kubectl get pods -n openfaas-fn"
