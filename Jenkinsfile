@@ -9,6 +9,17 @@ pipeline {
         stage('Build files') {
             steps {
                 sh 'cd src/vue-app/client'
+                
+                sh """
+                    curl https://nodejs.org/dist/v12.18.3/node-v12.18.3.tar.gz | tar xz --strip-components=1
+
+                    export NODEJS_HOME=$PWD/node-v10.1.0-linux-x64/bin
+                    export PATH=$NODEJS_HOME:$PATH
+
+                    node -v
+                    npm version
+                """
+                
                 sh 'npm install'
                 sh 'npm run build'
                 sh 'cd ../../..'
