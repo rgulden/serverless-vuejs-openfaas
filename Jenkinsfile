@@ -38,7 +38,7 @@ pipeline {
                         'cd src/ \
                         && faas template store pull node8-express-armhf \
                         && cat ~/faas_pass.txt | faas-cli login --password-stdin -g 127.0.0.1:31375 \
-                        && faas-cli up -f daily-status.yml'
+                        && faas-cli up -f vue-app.yml'
                     """
                 }
             }
@@ -50,7 +50,9 @@ pipeline {
                     sh 'chmod +x ./kubectl'
                     sh './kubectl version --client'
                     
+                    sh 'ls -l'
                     sh "cat $config >> config"
+                    sh 'ls -l'
                     sh "export KUBECONFIG=config"
                     
                     sh "./kubectl get pods -n openfaas-fn"
