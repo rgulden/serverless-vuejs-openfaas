@@ -9,10 +9,11 @@ pipeline {
         }
         stage('Build files') {
             steps {
-                sh 'cd src/vue-app/client'
-                sh 'npm install'
-                sh 'npm run build'
-                sh 'cd ../../..'
+                sh """
+                    cd src/vue-app/client \
+                    && npm install \
+                    && npm run build
+                """
                 sh 'ls -l'
             }
         }
