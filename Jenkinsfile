@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build files') {
             steps {
-                nodejs(nodeJSInstallationName: 'Node 10.1') {
+                nodejs(nodeJSInstallationName: 'Node 10.16.1') {
                     sh 'cd src/vue-app/client'
                     sh 'npm install'
                     sh 'npm run build'
