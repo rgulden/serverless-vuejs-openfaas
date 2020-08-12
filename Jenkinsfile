@@ -13,7 +13,7 @@ pipeline {
                 sh """
                     curl https://nodejs.org/dist/v12.18.3/node-v12.18.3.tar.gz | tar xz --strip-components=1
 
-                    export NODEJS_HOME=$PWD/node-v10.1.0-linux-x64/bin
+                    export NODEJS_HOME=$PWD/node-v12.18.3/bin
                     export PATH=$NODEJS_HOME:$PATH
 
                     node -v
