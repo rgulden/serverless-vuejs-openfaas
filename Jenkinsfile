@@ -23,10 +23,10 @@ pipeline {
                     sh 'if [ -d "/var/jenkins_home/.ssh/known_hosts" ]; then rm -Rf /var/jenkins_home/.ssh/known_hosts; fi'
                     sh """
                         ssh -o StrictHostKeyChecking=no pi@192.168.1.30 \
-                        'if [ -d "src" ]; then rm -Rf src; fi'
+                        'if [ -d "vuejs-faas" ]; then rm -Rf vuejs-faas; fi'
                     """
                     sh 'rm -rf src/vue-app/client/node_modules'
-                    sh 'scp -o StrictHostKeyChecking=no -r src/ pi@192.168.1.30:~/'
+                    sh 'scp -o StrictHostKeyChecking=no -r src/ pi@192.168.1.30:~/vuejs-faas'
                 }
             }
         }
