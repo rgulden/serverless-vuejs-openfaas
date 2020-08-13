@@ -35,7 +35,7 @@ pipeline {
                 sshagent(credentials : ['gt-ssh']) {                    
                     sh """
                         ssh -o StrictHostKeyChecking=no pi@192.168.1.30 \
-                        'cd src/ \
+                        'cd vuejs-faas/ \
                         && faas template store pull node8-express-armhf \
                         && cat ~/faas_pass.txt | faas-cli login --password-stdin -g 127.0.0.1:31375 \
                         && faas-cli up -f vue-app.yml'
