@@ -50,10 +50,7 @@ pipeline {
                     sh 'chmod +x ./kubectl'
                     sh './kubectl version --client'
                     
-                    sh 'ls -l'
-                    sh "cat $config >> config"
-                    sh 'ls -l'
-                    sh "export KUBECONFIG=config"
+                    sh "export KUBECONFIG=\$config "
                     
                     sh "./kubectl get pods -n openfaas-fn"
                 }
