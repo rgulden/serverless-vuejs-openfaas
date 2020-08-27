@@ -1,9 +1,9 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://127.0.0.1:31375
+  gateway: http://192.168.1.6:31112
 functions:
   guldentech-vue-app:
     lang: node8-express-armhf
     handler: ./vue-app
-    image: rgulden7/vue-app:latest
+    image: 10.10.10.1:5000/vue-app:latest
