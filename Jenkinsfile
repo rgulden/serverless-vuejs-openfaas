@@ -17,30 +17,15 @@ pipeline {
                 sh 'ls -l'
             }
         }
-        stage('copy files to pi') {
-            steps {
-                sshagent(credentials : ['gt-ssh']) {
-                    sh 'if [ -d "/var/jenkins_home/.ssh/known_hosts" ]; then rm -Rf /var/jenkins_home/.ssh/known_hosts; fi'
-                    sh """
-                        ssh -o StrictHostKeyChecking=no pi@192.168.1.30 \
-                        'if [ -d "vuejs-faas" ]; then rm -Rf vuejs-faas; fi'
-                    """
-                    sh 'rm -rf src/vue-app/client/node_modules'
-                    sh 'scp -o StrictHostKeyChecking=no -r src/ pi@192.168.1.30:~/vuejs-faas'
-                }
-            }
-        }
-        stage('ssh into pi and build/deploy function') {
-            steps {
-                sshagent(credentials : ['gt-ssh']) {                    
-                    sh """
-                        ssh -o StrictHostKeyChecking=no pi@192.168.1.30 \
-                        'cd vuejs-faas/ \
-                        && faas template store pull node8-express-armhf \
-                        && cat ~/faas_pass.txt | faas-cli login --password-stdin -g 127.0.0.1:31375 \
-                        && faas-cli up -f vue-app.yml'
-                    """
-                }
+        stage('downlaod faas-cli and run code') {
+            steps {                 
+                sh """
+                    cd src/
+                    curl -LO https://github.com/openfaas/faas-cli/releases/download/0.12.9/faas-cli
+                    chmod +x ./faas-cli
+                    ./faas-cli template store pull node8-express-armhf
+                    ./faas-cli up -f vue-app.yml
+                """
             }
         }
     }
