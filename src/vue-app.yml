@@ -4,6 +4,6 @@ provider:
   gateway: http://192.168.1.6:31112
 functions:
   guldentech-vue-app:
-    lang: node8-express-armhf
+    lang: node8-express
     handler: ./vue-app
     image: 10.10.10.1:5000/vue-app:latest
