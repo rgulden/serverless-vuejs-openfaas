@@ -18,14 +18,19 @@ pipeline {
             }
         }
         stage('downlaod faas-cli and run code') {
-            steps {                 
-                sh """
-                    cd src/
-                    curl -LO https://github.com/openfaas/faas-cli/releases/download/0.12.9/faas-cli
-                    chmod +x ./faas-cli
-                    ./faas-cli template store pull node8-express-armhf
-                    ./faas-cli up -f vue-app.yml
-                """
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh """
+                        cd src/
+                        curl -LO https://github.com/openfaas/faas-cli/releases/download/0.12.9/faas-cli
+                        chmod +x ./faas-cli
+
+                        docker login -u ${USERNAME} -p ${PASSWORD}
+
+                        ./faas-cli template store pull node8-express-armhf
+                        ./faas-cli up -f vue-app.yml
+                    """
+                }
             }
         }
     }
