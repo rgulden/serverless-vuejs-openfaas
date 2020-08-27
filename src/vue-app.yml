@@ -6,4 +6,4 @@ functions:
   guldentech-vue-app:
     lang: node8-express
     handler: ./vue-app
-    image: 10.10.10.1:5000/vue-app:latest
+    image: rgulden7/vue-app:latest
